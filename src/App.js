@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useLayoutEffect, useState } from 'react';
+import Dashboard from './Components/Dashboard';
+import MobileViewError from './Components/MobileViewError';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [mobileView, setMobileView] = useState(false);
+  function useWindowSize() {
+    useLayoutEffect(() => {
+      function updateSize() {
+        if (window.innerWidth < 1350) {
+          setMobileView(true);
+        } else {
+          setMobileView(false);
+        }
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+    }, []);
+  }
+  useWindowSize();
+  if (mobileView) return <MobileViewError />;
+  return <Dashboard />;
 }
 
 export default App;

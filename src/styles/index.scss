@@ -1,0 +1,414 @@
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: local('HelveticaNeue'),
+    url('../fonts/HelveticaNeue.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: local('HelveticaNeue'),
+    url('../fonts/HelveticaNeueBd.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: local('HelveticaNeue'),
+    url('../fonts/HelveticaNeue\ Medium.ttf') format('truetype');
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: HelveticaNeue;
+  color: #ffffff;
+  background: radial-gradient(
+    123.22% 129.67% at 100.89% -5.6%,
+    #201d47 0%,
+    #17153a 100%
+  );
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  box-shadow: 0px 60px 60px rgba(0, 0, 0, 0.25);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.dashboard {
+  &__flex {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__aside-nav {
+    background: linear-gradient(
+      180deg,
+      rgba(38, 34, 80, 0.65) 0%,
+      rgba(27, 25, 66, 0.85) 57.44%,
+      #17163b 100%
+    );
+    width: 340px;
+    min-height: 100vh;
+    .nav {
+      margin-top: 70px;
+      &__logo {
+        margin-left: 36px;
+        margin-bottom: 147px;
+      }
+      &__menu {
+        list-style: none;
+        &_each {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 52px;
+          margin-left: 56px;
+          cursor: pointer;
+          position: relative;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: -65px;
+            height: 17px;
+            width: 17px;
+            background: transparent;
+            box-shadow: 0px 0px 5px #1f1c45;
+            border-radius: 50%;
+          }
+          .nav__p {
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.5px;
+            color: #6f6c99;
+            margin-left: 27px;
+            position: relative;
+            &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              top: -10px;
+              left: -126px;
+              width: 34px;
+              height: 34px;
+              background: transparent;
+            }
+          }
+          svg {
+            height: 27px;
+            width: 27px;
+            rect {
+              fill: #6f6c99;
+            }
+          }
+          &.active,
+          &:hover {
+            &::before {
+              background: #53b9ea;
+            }
+            .nav__p {
+              color: #53b9ea;
+              &::before {
+                background: radial-gradient(
+                  43.97% 43.97% at 50% 51.18%,
+                  rgba(0, 196, 255, 0.0001) 0%,
+                  rgba(50, 196, 246, 0.264719) 35.94%,
+                  rgba(83, 185, 234, 0.0001) 100%
+                );
+              }
+            }
+            svg {
+              fill: #53b9ea;
+              rect,
+              path,
+              circle {
+                fill: #53b9ea;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__main {
+    padding: 40px 32px 31px 65px;
+    width: 100%;
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .header__text {
+        h1 {
+          font-weight: bold;
+          font-size: 30px;
+          line-height: 36px;
+          color: #ffffff;
+          opacity: 0.9;
+        }
+        &__sub-header {
+          margin-top: 7px;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 14px;
+          color: #5b5a99;
+        }
+      }
+      .header__icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .search-menu__set,
+        .notification-profile__set {
+          display: flex;
+          align-items: center;
+        }
+        .search-menu__set {
+          margin-right: 45px;
+          & :nth-child(1) {
+            margin-right: 38px;
+          }
+        }
+        .notification__panel {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 28px;
+          background: linear-gradient(136.67deg, #ff409a 8.34%, #c438ef 95.26%);
+          opacity: 0.8;
+          box-shadow: 0px 4px 31px #ba1358;
+          border-radius: 14px;
+          margin-right: 25px;
+          svg {
+            margin-right: 6px;
+          }
+        }
+        .profile-view {
+          display: flex;
+          align-items: center;
+          .profile__img {
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+            img {
+              height: 100%;
+              width: 100%;
+              border-radius: 3px;
+            }
+          }
+          .profile__name {
+            font-size: 13px;
+            line-height: 15px;
+            text-align: right;
+            color: #5b5a99;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    section.wallets {
+      margin-top: 26px;
+      .wallets__header {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #b1afcd;
+        margin-bottom: 21px;
+      }
+
+      .wallets-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .mini-card {
+          width: 190px;
+          height: 74px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          mix-blend-mode: normal;
+          border: 1px solid #312f62;
+          box-sizing: border-box;
+          border-radius: 10px;
+          cursor: pointer;
+          &.wallet-card {
+            margin-right: 20px;
+            &.new-currency {
+              border: 1px dashed #312f62;
+              .wallet-card-body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .new-currency__text {
+                  font-weight: bold;
+                  font-size: 13px;
+                  line-height: 16px;
+                  text-align: right;
+                  color: #ffffff;
+                  mix-blend-mode: normal;
+                  opacity: 0.2;
+                }
+              }
+            }
+          }
+          &:hover {
+            border: transparent;
+            color: white !important;
+            svg {
+              path {
+                stroke: white;
+              }
+              linearGradient {
+                stop-color: white !important;
+                stop {
+                  stop-color: white !important;
+                }
+              }
+            }
+            .arrow___svg {
+              path {
+                fill: white;
+              }
+            }
+            .wallet___type-name,
+            .new-currency__text {
+              opacity: 0.5 !important;
+            }
+            .wallet___rate {
+              color: white !important;
+            }
+            background: linear-gradient(
+              135deg,
+              #40ddff 0%,
+              #14bae3 19.24%,
+              #13b1e6 68.64%,
+              #11aadf 81.77%,
+              #0b98c5 100%
+            );
+          }
+          .wallet-card-body {
+            width: 100%;
+            height: 100%;
+            padding: 15px 25px 13px 25px;
+            .wallet-details-container {
+              display: flex;
+              align-items: center;
+              height: 100%;
+              .wallet__logo {
+                margin-right: 27px;
+              }
+              .wallet-details {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &__amount_type {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  .wallet___type-name {
+                    font-weight: bold;
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-align: right;
+                    color: #ffffff;
+                    mix-blend-mode: normal;
+                    opacity: 0.5;
+                    margin-left: 15px;
+                    .wallet__amount {
+                      font-size: 17px;
+                      line-height: 20px;
+                      text-align: right;
+                      color: #ffffff;
+                    }
+                  }
+                }
+                &__graph_arrow_rate {
+                  width: 100%;
+                  display: flex;
+                  align-items: flex-end;
+                  justify-content: space-between;
+                  flex: 1;
+                  .wallet___arrow {
+                    align-self: center;
+                  }
+                  .wallet___rate {
+                    font-weight: 500;
+                    font-size: 11px;
+                    line-height: 12px;
+                    &.positive {
+                      color: #50e3c2;
+                    }
+                    &.negative {
+                      color: #e3507a;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .graph-section {
+    width: 953.53px;
+    height: 436.48px;
+    margin-top: 5px;
+  }
+}
+
+.filter-chat {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin-right: 50px;
+  .filter-chat__each {
+    margin-left: 12px;
+    cursor: pointer;
+    color: #b1afcd;
+    transition: all 0.5s linear;
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 3px;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: all 0.5s linear;
+    }
+    &.active {
+      color: white;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.mobile-view-error {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
